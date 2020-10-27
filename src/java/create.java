@@ -15,12 +15,12 @@ public class create extends HttpServlet {
         try {
             Class.forName("org.sqlite.JDBC");
             Connection con=DriverManager.getConnection("jdbc:sqlite:D://a.db");
-            String ename=req.getParameter("ename");
-            String loc=req.getParameter("loc");
-            String dt=req.getParameter("dt");
-            int nat=1;
+            String ename=req.getParameter("ename"); // ename ==> Event Organizer Name
+            String loc=req.getParameter("loc"); // loc ==> Location
+            String dt=req.getParameter("dt"); // dt ==> Date and Time
+            int nat=1; // NAT ==> Number of Attendies
             Statement st=con.createStatement();
-            String q="insert into evt values('"+ename+"','"+dt+"','"+nat+"','"+loc+"')";
+            String q="insert into evt values('"+ename+"','"+dt+"','"+nat+"','"+loc+"')"; // q ==> Query for Database
             st.executeUpdate(q);
             RequestDispatcher rd=req.getRequestDispatcher("events.jsp");
             rd.forward(req, res);
